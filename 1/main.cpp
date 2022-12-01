@@ -4,10 +4,16 @@
 #include <string>
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 int main()
 {
-    int top_elf = 0, top_val = 0, sum = 0, i = 0;
+    std::vector<int> top_vals;
+    for (int i = 0; i < 3; i++)
+    {
+        top_vals.push_back(0);
+    }
+    
     while (1)
     {
         std::string input;
@@ -15,7 +21,8 @@ int main()
         std::getline(std::cin, input);
         if (input.empty())
         {
-            printf("Top elf: %d\nElf calories: %d\n", top_elf, top_val);
+            int final = std::accumulate(top_vals.begin(), top_vals.end(), 0);
+            printf("Top 3 calories: %d\n", final);
             return 0;
         }
         
@@ -27,13 +34,13 @@ int main()
         }
 
         int sum = std::accumulate(cals.begin(), cals.end(), 0);
-        if (sum > top_val)
+        std::vector<int>::iterator res = std::min_element(top_vals.begin(), top_vals.end());
+        int index = std::distance(top_vals.begin(), res);
+        int cur_min = top_vals[index];
+        if (sum > cur_min)
         {
-            top_val = sum;
-            top_elf = i;
+            top_vals[index] = sum;
         }
-        i++;
-        
     }
     return 0;
 }
