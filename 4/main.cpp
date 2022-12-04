@@ -32,17 +32,38 @@ int main()
         
         
 
-        if ((atoi(first_low.c_str()) <= atoi(second_low.c_str())) && (atoi(first_high.c_str()) >= atoi(second_high.c_str()))){
+        if ((atoi(first_low.c_str()) >= atoi(second_low.c_str())) && (atoi(first_low.c_str()) <= atoi(second_high.c_str()))){
             std::cout << first_low << " " << first_high << "\n";
             std::cout << second_low << " " << second_high << "\n";
             sum++;
+            std::getline(std::cin, input);
+            continue;
         }
-        else {if ((atoi(second_low.c_str()) <= atoi(first_low.c_str())) && (atoi(second_high.c_str()) >= atoi(first_high.c_str()))){
+        else {if ((atoi(first_high.c_str()) >= atoi(second_low.c_str())) && (atoi(first_high.c_str()) <= atoi(second_high.c_str()))){
             std::cout << first_low << " " << first_high << "\n";
             std::cout << second_low << " " << second_high << "\n";
             sum++;
+            std::getline(std::cin, input);
+            continue;
         }
         }
+        if ((atoi(second_low.c_str()) >= atoi(first_low.c_str())) && (atoi(second_low.c_str()) <= atoi(first_high.c_str()))){
+            std::cout << first_low << " " << first_high << "\n";
+            std::cout << second_low << " " << second_high << "\n";
+            sum++;
+            std::getline(std::cin, input);
+            continue;
+        }
+        else {if ((atoi(second_high.c_str()) >= atoi(first_low.c_str())) && (atoi(second_high.c_str()) <= atoi(first_high.c_str()))){
+            std::cout << first_low << " " << first_high << "\n";
+            std::cout << second_low << " " << second_high << "\n";
+            sum++;
+            std::getline(std::cin, input);
+            continue;
+        }
+        }
+
+        
             
         std::getline(std::cin, input);
         
